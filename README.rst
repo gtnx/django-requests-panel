@@ -6,7 +6,7 @@ A Django Debug Toolbar panel for requests
 About
 -----
 
-This is a panel for `Django Debug Toolbar`_ 1.x that displays info about http requests made with the `requests` library. 
+This is a panel for `Django Debug Toolbar`_ 1.x that displays info about http requests made with the `requests`_ library. 
 
 Installation
 ------------
