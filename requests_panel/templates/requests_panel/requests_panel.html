@@ -9,6 +9,7 @@
                 <th>{% trans "Url" %}</th>
                 <th>{% trans "Code" %}</th>
                 <th>{% trans "Time (s)" %}</th>
+                <th>{% trans "Content length" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +18,8 @@
                     <td>{{query.request.method}}</td>
                     <td>{{query.request.url}}</td>
                     <td>{{query.status_code}}</td>
-                    <td>{{query.elapsed.total_seconds}}</td>
+                    <td>{{query.total_seconds}}</td>
+                    <td>{{query.content|length}}</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -2,7 +2,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 setup(name = 'django-requests-panel',
-      version = '0.0.1',
+      version = '0.1.0',
       author = 'Guillaume Thomas',
       author_email='guillaume.thomas642@gmail.com',
       license='LICENCE.txt',

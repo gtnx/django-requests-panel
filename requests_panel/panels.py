@@ -7,9 +7,7 @@ import copy
 import requests
 import functools
 
-_original_methods = {
-    method: getattr(requests, method) for method in ["get", "post", "head", "put", "delete", "options"]
-}
+_original_methods = dict([(method, getattr(requests, method)) for method in ["get", "post", "head", "put", "delete", "options"]])
 
 calls = []
 
@@ -50,6 +48,9 @@ requests.put = _put
 requests.delete = _delete
 requests.options = _options
 
+def _total_seconds(td):
+    return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 1e6) * 1e-6
+
 class RequestsDebugPanel(Panel):
     """
     Panel that displays queries made by Requests backends.
@@ -69,8 +70,7 @@ class RequestsDebugPanel(Panel):
         return 'Requests Queries'
 
     def nav_subtitle(self):
-        print(self.queries)
-        return "%s queries in %.2fs" % (len(self.queries), sum([q.elapsed.total_seconds() for q in self.queries]))
+        return "%s queries in %.2fs" % (len(self.queries), sum([_total_seconds(q.elapsed) for q in self.queries]))
 
     def url(self):
         return ''
@@ -81,6 +81,8 @@ class RequestsDebugPanel(Panel):
     def get_context(self):
         global calls
         self.queries = copy.deepcopy(calls)
+        for q in self.queries:
+            q.total_seconds = _total_seconds(q.elapsed)
         calls = []
 
         return {
