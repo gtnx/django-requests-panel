@@ -1,0 +1,34 @@
+{% load i18n %}
+
+{#<h4>{% trans 'Queries' %}</h4>#}
+{% if queries %}
+    <table>
+        <thead>
+            <tr>
+                <th>{% trans "Method" %}</th>
+                <th>{% trans "Url" %}</th>
+                <th>{% trans "Code" %}</th>
+                <th>{% trans "Time (s)" %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for query in queries %}
+                <tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+                    <td>{{query.request.method}}</td>
+                    <td>{{query.request.url}}</td>
+                    <td>{{query.status_code}}</td>
+                    <td>{{query.elapsed.total_seconds}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    {% if debug %}
+        <p>No requests queries were recorded during this request.</p>
+    {% else %}
+        <p style="padding: 10px 15px;">
+            <code style="display: inline;">DEBUG</code> is set to <code style="display: inline;">False</code>. This means
+            that Requests query logging is disabled.
+        </p>
+    {% endif %}
+{% endif %}
