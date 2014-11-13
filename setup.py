@@ -7,7 +7,7 @@ setup(
   author = 'Guillaume Thomas',
   author_email='guillaume.thomas642@gmail.com',
   license='LICENCE.txt',
-  description='',
+  description='A Django Debug Toolbar panel for requests',
   url = 'https://github.com/gtnx/django-requests-panel',
   install_requires = map(lambda line:line.strip("\n"), open('requirements.txt', 'r').readlines()),
   include_package_data = True,
