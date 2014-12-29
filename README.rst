@@ -24,6 +24,7 @@ Usage
 -----
 
 Add ``requests_panel`` to your ``INSTALLED_APPS`` so that we can find the templates in the panel.
+
 Add ``requests_panel.panels.RequestsDebugPanel`` to your ``DEBUG_TOOLBAR_PANELS``.
 
 Testing
