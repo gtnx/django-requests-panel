@@ -6,7 +6,7 @@ A Django Debug Toolbar panel for requests
 About
 -----
 
-This is a panel for `Django Debug Toolbar`_ 1.x that displays info about http requests made with the `requests`_ library. 
+This is a panel for `Django Debug Toolbar`_ 1.x that displays info about http requests made with the `requests`_ and `requests_futures`_libraries. 
 
 Installation
 ------------
@@ -41,3 +41,4 @@ Uses the `GNU GPL`_ license.
 .. _Django Debug Toolbar: https://github.com/django-debug-toolbar/django-debug-toolbar
 .. _GNU GPL: http://www.gnu.org/licenses/gpl-2.0.html
 .. _requests: http://docs.python-requests.org/en/latest/
+.. _requests_futures: https://github.com/ross/requests-futures
