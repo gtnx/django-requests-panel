@@ -19,13 +19,12 @@ or install the development version from source::
 
     pip install git+git@github.com:gtnx/django-requests-panel.git
 
-Then add ``requests_panel`` to your ``INSTALLED_APPS`` so that we can find the
-templates in the panel. 
 
 Usage
 -----
 
-TODO
+Add ``requests_panel`` to your ``INSTALLED_APPS`` so that we can find the templates in the panel.
+Add ``requests_panel.panels.RequestsDebugPanel`` to your ``DEBUG_TOOLBAR_PANELS``.
 
 Testing
 -------
