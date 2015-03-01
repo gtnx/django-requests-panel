@@ -34,6 +34,7 @@ Run tests using nose & coverage:
 
     nosetests --with-coverage --cover-package requests_panel .
 
+
 License
 -------
 
