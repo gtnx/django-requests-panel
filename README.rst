@@ -1,6 +1,9 @@
 Django Requests Panel
 =====================
 
+.. image:: https://travis-ci.org/gtnx/django-requests-panel.svg?branch=master
+    :target: https://travis-ci.org/gtnx/django-requests-panel
+
 A Django Debug Toolbar panel for requests
 
 About

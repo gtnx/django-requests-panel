@@ -24,7 +24,7 @@ class RequestsDebugPanel(Panel):
         return 'Requests Queries'
 
     def nav_subtitle(self):
-        return "%s queries in %.2fs" % (len(self.queries), sum([_total_seconds(q.elapsed) for q in self.queries]))
+        return "%s queries in %.2fs" % (len(self.queries), sum([q.total_seconds for q in self.queries if hasattr(q, "total_seconds")]))
 
     def url(self):
         return ''

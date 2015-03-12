@@ -1,13 +1,25 @@
 # -*- coding: utf-8 -*-
 
+import datetime
+import os
 import unittest
 import requests
-from requests_wrapper import retrieve_all_queries
+import requests_cache
+from requests_wrapper import retrieve_all_queries, _total_seconds
 from requests_futures.sessions import FuturesSession
 
 
 class PanelsTest(unittest.TestCase):
+    def setUp(self):
+        requests_cache.install_cache(
+            cache_name=os.path.join(os.path.dirname(__file__), "test"),
+            allowable_codes=(200, 404),
+            allowable_methods=('GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS')
+        )
+
     def test_all(self):
+        self.assertEquals(_total_seconds(datetime.timedelta(hours=1)), 3600)
+        self.assertEquals(_total_seconds(datetime.timedelta(minutes=10)), 600)
         requests.get("http://httpbin.org/get")
         requests.post("http://httpbin.org/post")
         requests.put("http://httpbin.org/put")
@@ -29,4 +41,4 @@ class PanelsTest(unittest.TestCase):
         queries = retrieve_all_queries()
         self.assertEqual(len(queries), 12)
         for q in queries:
-            self.assertIsInstance(q, requests.models.Response)
+            self.assertTrue(isinstance(q, requests.models.Response))

@@ -103,11 +103,17 @@ def _total_seconds(td):
 
 def retrieve_all_queries():
     global calls, future_calls
-    queries = copy.deepcopy(calls) + [copy.deepcopy(c.result()) for c in future_calls if not c.running()]
-
-    for q in queries:
-        q.total_seconds = _total_seconds(q.elapsed)
+    def _result(future):
+        try:
+            return copy.deepcopy(future.result())
+        except Exception as e:
+            return None
+    responses = copy.deepcopy(calls) + map(_result, filter(lambda future: not future.running(), future_calls))
+    
+    for response in responses:
+        if isinstance(response, requests.models.Response):
+            response.total_seconds = _total_seconds(response.elapsed)
     calls = []
     future_calls = []
 
-    return queries
+    return responses
