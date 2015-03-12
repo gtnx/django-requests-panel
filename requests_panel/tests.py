@@ -10,12 +10,12 @@ from requests_futures.sessions import FuturesSession
 
 
 class PanelsTest(unittest.TestCase):
-    def setUp(self):
-        requests_cache.install_cache(
-            cache_name=os.path.join(os.path.dirname(__file__), "test"),
-            allowable_codes=(200, 404),
-            allowable_methods=('GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS')
-        )
+    # def setUp(self):
+    #     requests_cache.install_cache(
+    #         cache_name=os.path.join(os.path.dirname(__file__), "test"),
+    #         allowable_codes=(200, 404),
+    #         allowable_methods=('GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS')
+    #     )
 
     def test_all(self):
         self.assertEquals(_total_seconds(datetime.timedelta(hours=1)), 3600)
