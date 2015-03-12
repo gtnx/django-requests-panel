@@ -1,2 +1,4 @@
 django-debug-toolbar
 requests_cache
+requests_futures
+requests
