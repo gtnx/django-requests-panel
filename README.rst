@@ -33,7 +33,7 @@ Add ``requests_panel.panels.RequestsDebugPanel`` to your ``DEBUG_TOOLBAR_PANELS`
 Testing
 -------
 
-Run tests using nose & coverage:
+Run tests using nose & coverage::
 
     nosetests --with-coverage --cover-package requests_panel .
 
