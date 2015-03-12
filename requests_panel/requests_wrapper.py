@@ -107,7 +107,10 @@ def retrieve_all_queries():
         try:
             return copy.deepcopy(future.result())
         except Exception as e:
-            return None
+            return {
+                "request": e.request,
+                "status_code": str(type(e))
+            }
     responses = copy.deepcopy(calls) + map(_result, filter(lambda future: not future.running(), future_calls))
     
     for response in responses:
